@@ -22,4 +22,4 @@ class ClientSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     first_name = serializers.StringRelatedField()
     last_name = serializers.StringRelatedField()
-    credit = serializers.DecimalField(max_digits=6, decimal_places=2)
+    credit = serializers.DecimalField(max_digits=6, decimal_places=2, coerce_to_string=False)

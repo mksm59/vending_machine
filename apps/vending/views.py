@@ -1,3 +1,5 @@
+from _decimal import Decimal
+
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.views import APIView
@@ -84,7 +86,7 @@ class ClientView(APIView):
             clients = Client.objects.filter(id__exact=client_id)
             if clients:
                 client = clients[0]
-                client.credit = client.credit + amount
+                client.credit = client.credit + Decimal(amount)
                 client.save()
                 return Response(data=client.first_name+" "+client.last_name+" added "+str(amount)+" credit", status=200)
         else:

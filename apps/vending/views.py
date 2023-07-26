@@ -65,8 +65,8 @@ class ClientView(APIView):
     def get(request: Request) -> Response:
         clients = Client.objects.filter()
         if request.query_params:
-            client_id = request.query_params["id"]
-            clients = Client.objects.filter(id__exact=client_id)
+            username = request.query_params["username"]
+            clients = Client.objects.filter(username__exact=username)
 
         clients_serializer = ClientSerializer(clients, many=True)
 

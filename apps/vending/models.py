@@ -36,6 +36,7 @@ class Client(models.Model):
         db_table = "client"
 
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    username = models.CharField(max_length=200, default=id)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     credit = models.DecimalField(max_digits=5, decimal_places=2, validators=[MinValueValidator(Decimal("0.00"))])
